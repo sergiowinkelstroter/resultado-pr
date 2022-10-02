@@ -24,7 +24,7 @@ export const App = () => {
   }, []);
 
   return (
-    <div className="w-[600px] m-auto bg-blue-200 p-4 rounded-lg shadow-lg flex justify-center flex-col mt-12">
+    <div className="md:w-[600px] m-auto bg-blue-200 p-4 rounded-lg shadow-lg flex justify-center flex-col mt-12 mx-5 md:mx-auto mb-5 md:mb-0">
       {dados.map((dado, index) => {
         return (
           <div className="" key={index}>
@@ -34,7 +34,7 @@ export const App = () => {
           </div>
         );
       })}
-      <div className="flex justify-between mb-6">
+      <div className="flex flex-col md:flex-row justify-between mb-6">
         <p>Votos validos: {vv}</p>
         <p>Ultima atualizacao - {horario}</p>
       </div>
