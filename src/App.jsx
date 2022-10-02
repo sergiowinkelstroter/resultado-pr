@@ -4,6 +4,7 @@ export const App = () => {
   const [dados, setDados] = useState([]);
   const [horario, setHorario] = useState("");
   const [vv, setVv] = useState("");
+  const [ta, setTa] = useState("");
   useEffect(() => {
     fetch(
       "https://resultados.tse.jus.br/oficial/ele2022/544/dados-simplificados/br/br-c0001-e000544-r.json"
@@ -21,6 +22,11 @@ export const App = () => {
     )
       .then((data) => data.json())
       .then((data) => setHorario(data.ht));
+    fetch(
+      "https://resultados.tse.jus.br/oficial/ele2022/544/dados-simplificados/br/br-c0001-e000544-r.json"
+    )
+      .then((data) => data.json())
+      .then((data) => setTa(data.pst));
   }, []);
 
   return (
@@ -34,11 +40,14 @@ export const App = () => {
           </div>
         );
       })}
-      <div className="flex flex-col md:flex-row justify-between mb-6">
+      <div className="flex flex-col md:flex-row justify-between mb-5">
         <p>Votos validos: {vv}</p>
         <p>Ultima atualizacao - {horario}</p>
       </div>
-      <p className="text-xs">FONTE: resultados.tse.jus.br</p>
+      <div className="flex flex-col md:flex-row justify-between mb-2">
+        <p>TOTAL APURADO: {ta}%</p>
+        <p className="text-xs">FONTE: resultados.tse.jus.br</p>
+      </div>
     </div>
   );
 };
